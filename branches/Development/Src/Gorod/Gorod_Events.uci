@@ -1,0 +1,185 @@
+/****************************/
+/*            Игра          */
+/****************************/
+const GOROD_GAME_MINID =            0;
+const GOROD_GAME_STARTED =          0; 
+const GOROD_GAME_ENDED =            1;
+const GOROD_MISSION_DESCRIPTION =   2;
+const GOROD_MISSION_ENDED =         3;
+const GOROD_GAME_MAXID =            999;
+
+const GOROD_POSSESSED   =           10;
+const GOROD_UNPOSSESSED =           11;
+
+
+/****************************/
+/*          Автодром         */
+/****************************/
+const GOROD_AUTODROM_MINID =     1000;
+
+const GOROD_EVENT_DRIVE_IN                          = 1000; // Вы въехали на автодром
+const GOROD_EVENT_DRIVE_OUT                         = 1001; // Вы выехали с автодрома
+const GOROD_EVENT_EXERCISE2_STARTED                 = 1002; // Вы начали упражнение Остановка и начало движения на подъёме
+const GOROD_EVENT_EXERCISE2_FINISHED                = 1003; // Вы завершили упражнение Остановка и начало движения на подъёме
+const GOROD_EVENT_EXERCISE6_STARTED                 = 1004; // Вы начали упражнение Разворот и парковка
+const GOROD_EVENT_EXERCISE6_FINISHED                = 1005; // Вы завершили упражнение Разворот и парковка
+const GOROD_EVENT_EXERCISE7_STARTED                 = 1006; // Вы начали упражнение Параллельная парковка задним ходом
+const GOROD_EVENT_EXERCISE7_FINISHED                = 1007; // Вы завершили упражнение Параллельная парковка задним ходом
+const GOROD_EVENT_OUT_OF_PATH                       = 1009; // Вы не соблюдаете маршрут движения по автодрому
+const GOROD_EVENT_HIGH_SPEED                        = 1011; // Вы превысили ограничение скорости на автодроме
+const GOROD_EVENT_OUT_OF_EXERCISE_LINE              = 1012; // Вы пересекли линию фиксации выполнения упражнения или линию СТОП
+const GOROD_EVENT_START_MOVING_BEFORE_3_SECONDS     = 1013; // Вы начали движение ранее, чем через 3 с после остановки
+const GOROD_EVENT_NOT_MOVING_AFTER_30_SECONDS       = 1014; // Вы не начали движение в течение 30 с после остановки
+const GOROD_EVENT_DRIVE_BACK                        = 1015; // Вы допустили откат ТС на величину более чем 0,3 м при остановке или начале движения
+const GOROD_EVENT_BACK_WHEELS_ARE_NOT_AT_THE_LINE   = 1016; // Вы не коснулись задними колёсами ТС линии фиксации выполнения упражнения
+const GOROD_EVENT_OUT_OF_CONTROL_LINE1              = 1017; // Вы пересекли контрольную линию
+const GOROD_EVENT_TOO_SLOW1                         = 1018; // Вы затратили более 2 минут на выполнение упражнения
+const GOROD_EVENT_RIGHT_WHEELS_ARE_NOT_AT_THE_LINE  = 1019; // Вы не коснулись правыми колёсами линии фиксации выполнения упражнения
+const GOROD_EVENT_OUT_OF_CONTROL_LINE2              = 1020; // Вы пересекли контрольную линию
+const GOROD_EVENT_TOO_SLOW2                         = 1021; // Вы затратили более 2 минут на выполнение упражнения
+const GOROD_EVENT_NO_ACTIONS                        = 1022; // Вы не совершали действий по упражнению в течение 5 минут. Выполнение упражнения прекращено.
+const GOROD_EVENT_TOO_FAR_FROM_PATH                 = 1023; // Вы слишком отклонились от маршрута. Выполнение заданий на автодроме прекращено.
+const GOROD_EVENT_WRONG_ACTIONS                     = 1024; // Вы нарушили порядок действий при выполнении упражнения. Выполнение упражнения прекращено.
+const GOROD_EVENT_TOO_FAR_FROM_EXERCISE_ZONE        = 1025; // Вы слишком далеко отъехали от зоны выполнения упражнения
+const GOROD_EVENT_OFF_ROAD                          = 1026; // Вы выехали с проезжей части. Выполнение упражнения будет прекращено.
+
+const GOROD_EVENT_GO_TO_ASCENT                      = 1027; // Остановите ТС на участке подъёма между линией фиксации выполнения упражнения и линией "стоп";
+const GOROD_EVENT_STOP                              = 1028; // Зафиксируйте ТС в неподвижном состоянии с помощью ручного тормоза, включите нейтральную передачу;
+const GOROD_EVENT_GO                                = 1029; // Продолжите движение в прямом направлении, не допуская отката ТС назад.(время для выполнения 3 - 30сек)
+const GOROD_EVENT_MOVE_FORWARDS                     = 1030; // Проедьте вперёд;
+const GOROD_EVENT_PARK_BACK                         = 1031; // Установите ТС на место парковки задним ходом так, чтобы задние колёса находились на линии фиксации выполнения упражнения;
+const GOROD_EVENT_DRIVE_OUT_BACK                    = 1032; // Выезжайте в обратном напралении.
+const GOROD_EVENT_PARK_RIGHT                        = 1033; // Установите ТС на место парковки задним ходом так, чтобы переднее и заднее правые колёса находились на линии фиксации выполнения упражнения;
+const GOROD_EVENT_DRIVE_OUT_FROM_PARKING            = 1034; // Выезжайте с места парковки.
+
+const GOROD_EVENT_DRIVE_LEFT                        = 1035; // Поверните налево
+const GOROD_EVENT_DRIVE_RIGHT                       = 1036; // Поверните направо
+const GOROD_EVENT_DRIVE_FORWARD                     = 1037; // Проедьте прямо
+
+const GOROD_AUTODROM_MAXID =     1999;
+
+//==================================================
+
+
+/****************************/
+/*          Знаки           */
+/****************************/
+const GOROD_ZNAK_MINID                  = 2000;
+
+const GOROD_ZNAK_MAX_SPEED_LIMIT        = 2001;     // ограничение максимальной скорости
+const GOROD_ZNAK_MIN_SPEED_LIMIT        = 2002;     // ограничение минимальной скорости
+const GOROD_ZNAK_CANCEL_MAX_SPEED_LIMIT = 2003;     // отмена  максимальной ограничения скорости
+const GOROD_ZNAK_CANCEL_MIN_SPEED_LIMIT = 2004;     // отмена минимального ограничения скорости
+const GOROD_ZNAK_END_ALL_LIMIT          = 2005;     // конец всех ограничений
+const GOROD_ZNAK_BRICK                  = 2006;     // знак кирпич, проезд запрещен
+const GOROD_ZNAK_STOP_START             = 2007;     // въехал в область дествия знака STOP (движение без остановки запрещено)
+const GOROD_ZNAK_STOP_END               = 2008;     // выехал из область дествия знака STOP (движение без остановки запрещено)
+const GOROD_ZNAK_STOP_LINE              = 2009;     // проехал линию знака стоп (до неё обязательно необходимо остановиться)
+
+
+const GOROD_ZNAK_MAXID                  = 2999;
+
+
+
+/********************************/
+/*          ПДД                 */
+/********************************/
+const GOROD_PDD_MINID                           = 3000;
+
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT          = 3001;         // нарушено максимальное скоростное ограниечение, генерится непосредственно в момент нарушения, ParametrInt1 - скоростное ограничение 
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT_RESULT   = 3002;		    // степень нарушения максимального скоростного ограниечение, событие генерится после окончания зоны действия знака, ParametrInt1 - скоростное ограничение, ParametrInt2- степень нарушения
+const GOROD_PDD_OUT_OF_SPEED_MIN_LIMIT          = 3003;         // нарушено минимальное скоростное ограниечение, генерится непосредственно в момент нарушения, ParametrInt1 - скоростное ограничение 
+const GOROD_PDD_OUT_OF_SPEED_MIN_LIMIT_RESULT   = 3004;		    // степень нарушения минимального скоростного ограниечение, событие генерится после окончания зоны действия знака, ParametrInt1 - скоростное ограничение, ParametrInt2- степень нарушения
+																//      || сообщение для HUD о недопустимой минимальной скорости
+
+const GOROD_PDD_CROSSROAD_MOVE_ON_RED           = 3005;         // проезд на красный свет светофора
+const GOROD_PDD_CROSSROAD_MOVE_ON_GREEN         = 3006;         // проезд на зеленый свет светофора
+
+const GOROD_PDD_ROAD_ON_OFFROAD                 = 3007;         // выезд на обочину
+const GOROD_PDD_ROAD_ON_ROAD                    = 3008;         // выезд на проезжую часть
+const GOROD_PDD_ROAD_ON_WRONG_SIDE              = 3009;         // выезд на встречку
+
+const GOROD_PDD_VIOLATION_BRICK                 = 3010;         // проезд под знак кирпич || сообщение для HUD о проезде под кирпич
+
+const GOROD_PDD_CROSSROAD_ENTER                 = 3011;         // первое вхождение в перекресток
+const GOROD_PDD_CROSSROAD_EXIT                  = 3012;         // выезд из перекрестка
+const GOROD_PDD_ROAD_DRIVE_ON_WRONG_SIDE        = 3013;         // полностью на встречке
+const GOROD_PDD_ROAD_DRIVE_TO_WRONG_SIDE        = 3014;         // выезжает на встречку
+const GOROD_PDD_ROAD_MOVE_TO_LEFT               = 3015;         // перестроение влево
+const GOROD_PDD_ROAD_MOVE_TO_RIGHT              = 3016;         // перестроение вправо
+const GOROD_PDD_ROAD_FINISH_MOVE_TO_LEFT        = 3017;         // перестроение влево закончено
+const GOROD_PDD_ROAD_FINISH_MOVE_TO_RIGHT       = 3018;         // перестроение вправо закончено
+const GOROD_PDD_ROAD_BUMP_HUMAN_BOT             = 3019;         // ???
+
+const GOROD_PDD_CROSSROAD_ENTER_FROM_WRONG_SIDE = 3020;                 // 
+const GOROD_PDD_CROSSROAD_LEAVE_FROM_WRONG_SIDE = 3021;                 // 
+
+const GOROD_PDD_CROSSROAD_DRIVE_IN_FORWARD_CORRECT = 3022;              //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_FORWARD_INCORRECT = 3023;            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_FORWARD_DISABLED = 3024;             //
+
+const GOROD_PDD_CROSSROAD_DRIVE_IN_LEFT_CORRECT = 3025;	                //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_LEFT_INCORRECT = 3026;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_LEFT_DISABLED = 3027;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_LEFT_INTERNAL_DISABLED = 3028;       //
+
+const GOROD_PDD_CROSSROAD_DRIVE_IN_RIGHT_CORRECT = 3029;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_RIGHT_INCORRECT = 3030;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_RIGHT_DISABLED = 3031;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_RIGHT_INTERNAL_DISABLED = 3032;      //
+
+const GOROD_PDD_CROSSROAD_DRIVE_IN_REVERSE_CORRECT = 3033;              //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_REVERSE_INCORRECT = 3034;	        //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_REVERSE_DISABLED = 3035;	            //
+const GOROD_PDD_CROSSROAD_DRIVE_IN_REVERSE_INTERNAL_DISABLED = 3036;	//
+
+const GOROD_PDD_VIOLATION_STOP   = 3037;                                //нарушение знака STOP (проезд без остановки) || сообщение для HUD о нарушение знака STOP
+
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT_RESULT_10_20   = 3038;           // сообщение для HUD о превышении скорости 10-20
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT_RESULT_20_40   = 3039;           // сообщение для HUD о превышении скорости 20-40
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT_RESULT_40_60   = 3040;           // сообщение для HUD о превышении скорости 40-60
+const GOROD_PDD_OUT_OF_SPEED_MAX_LIMIT_RESULT_60   = 3041;              // сообщение для HUD о превышении скорости более 60
+
+const GOROD_PDD_CROSSROAD_DRIVE_WHILE_LEFT_SECTION_DISABLED = 3042;	    // проезд при запрещающем сигнале левой доп.секции
+const GOROD_PDD_CROSSROAD_DRIVE_WHILE_RIGHT_SECTION_DISABLED = 3043;	// проезд при запрещающем сигнале правой доп.секции
+
+const GOROD_PDD_SIRENA_SIGNAL_ENABLED=3044;                             // сигнал сиренв включен
+const GOROD_PDD_SIRENA_SIGNAL_DISABLED=3045;                            // сигнал сиренв выключен
+const GOROD_PDD_MAXID                           = 3999;
+
+
+/********************************************************************/
+/*          последовательность действий при начале движения         */
+/********************************************************************/
+
+const GOROD_STARTMOVING_MINID= 4000;
+
+const GOROD_STARTMOVING_BELT                = 4000;         // Пристегнуть ремень
+const GOROD_STARTMOVING_CLUTCH_DOWN         = 4001;         // Сцепление вниз
+const GOROD_STARTMOVING_IGNITION            = 4002;         // Пуск двигателя
+const GOROD_STARTMOVING_FIRST_GEAR          = 4003;         // Первая передача
+const GOROD_STARTMOVING_LEFT_TURN_SIGNAL    = 4004;         // Указатель поворота (влево)
+const GOROD_STARTMOVING_HAND_BRAKE          = 4005;         // Стояночный тормоз вниз
+const GOROD_STARTMOVING_THROTTLE            = 4006;         // Газ
+const GOROD_STARTMOVING_CLUTCH_UP           = 4007;         // Сцепление наверх
+const GOROD_STARTMOVING_TURN_ON_MASS        = 4008;         // кратковременно нажать на кнопку выключателя массы, включить аккумуляторные батареи
+const GOROD_STARTMOVING_RIGHT_TURN_SIGNAL   = 4009;         // Указатель поворота (вправо)
+
+const GOROD_STARTMOVING_MAXID               = 4099;
+
+
+
+/************************************************/
+/*          сообщения о столкновениях           */
+/************************************************/
+
+const GOROD_CRASH_MINID = 4100;
+
+const GOROD_CRASH_PLAYER                = 4100;     // столкновение с другим игроком
+const GOROD_CRASH_VEHICLE               = 4101;     // столкновение с машиной ботом
+const GOROD_CRASH_HUMAN_BOT             = 4102;     // столкновение с человеком ботом
+const GOROD_CRASH_OTHER                 = 4103;     // столкновение с другим объектом
+const GOROD_CRASH_TEMP_MISSION_COMPLITE = 4104;     // ВРЕМЕННО!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const GOROD_CRASH_COMMON                = 4105;     // сообщение об аварии в общем виде
+
+const GOROD_CRASH_MAXID                 = 4199;
