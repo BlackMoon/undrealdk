@@ -1,0 +1,5 @@
+/**
+ * This file is used to provide a common area for online constants to be added
+ */
+
+const KAMAZ_PROPERTY_SERVERNAME                             = 0;
