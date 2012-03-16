@@ -1,0 +1,6 @@
+// Macros for easy calling of Library_Message functions.
+`define GetObjectMethodPrefix() self $ "." $ GetFuncName() $ ": "
+
+`define ScreenMessage(message) class'Library_Msg'.static.ScreenMessage(self, `message)
+`define DebugMessage(message) class'Library_Msg'.static.DebugMessage(self, `GetObjectMethodPrefix() $ `message)
+`define LogMessage(message) class'Library_Msg'.static.LogMessage(`GetObjectMethodPrefix() $ `message)
