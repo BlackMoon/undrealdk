@@ -1,0 +1,3 @@
+// константы для свойств сервера
+const   FORSAGE_PROPERTY_SERVERNAME   = 0;
+const   FORSAGE_PROPERTY_MAPNAME      = 1;
