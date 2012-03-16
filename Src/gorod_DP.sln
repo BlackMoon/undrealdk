@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E17AB4A1-DF35-4579-9E91-0CFFBFB6391A}") = "gorod_DP", "gorod_DP.ucproj", "{53465958-3F20-412F-81B4-A3B8E74D4886}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DPAsync", "..\cpp\DPAsync\DPAsync.vcxproj", "{2D1D76A5-00BE-4822-8760-AA69D4A2B3E0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP_WriteAngles", "..\cpp\DP_WriteAngles\DP_WriteAngles.vcxproj", "{54C9E837-9989-4A07-8183-824E80141B5F}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53465958-3F20-412F-81B4-A3B8E74D4886}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53465958-3F20-412F-81B4-A3B8E74D4886}.Debug|Win32.Build.0 = Debug|Win32
+		{53465958-3F20-412F-81B4-A3B8E74D4886}.Release|Win32.ActiveCfg = Release|Win32
+		{53465958-3F20-412F-81B4-A3B8E74D4886}.Release|Win32.Build.0 = Release|Win32
+		{2D1D76A5-00BE-4822-8760-AA69D4A2B3E0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2D1D76A5-00BE-4822-8760-AA69D4A2B3E0}.Debug|Win32.Build.0 = Debug|Win32
+		{2D1D76A5-00BE-4822-8760-AA69D4A2B3E0}.Release|Win32.ActiveCfg = Release|Win32
+		{2D1D76A5-00BE-4822-8760-AA69D4A2B3E0}.Release|Win32.Build.0 = Release|Win32
+		{54C9E837-9989-4A07-8183-824E80141B5F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{54C9E837-9989-4A07-8183-824E80141B5F}.Debug|Win32.Build.0 = Debug|Win32
+		{54C9E837-9989-4A07-8183-824E80141B5F}.Release|Win32.ActiveCfg = Release|Win32
+		{54C9E837-9989-4A07-8183-824E80141B5F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
